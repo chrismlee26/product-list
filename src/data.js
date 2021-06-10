@@ -6,16 +6,28 @@ export default data
 
 const allCategories = data.map(obj => obj.category)
 
-// const categoryObjects = allCategories.reduce((obj, cat) => {
-//   obj[cat] = 0
-//   return obj
-// }, {})
-// const categoriesUnique = Object.keys(categoryObjects)
+// const categorieSet = new Set(allCategories)
+// const categoriesUnique = Array.from(categorieSet)
 
-const categorieSet = new Set(allCategories)
-const categoriesUnique = Array.from(categorieSet)
+const categoryObjects = allCategories.reduce((obj, cat) => {
+  obj[cat] = 0
+  return obj
+}, {})
+const categoriesUnique = Object.keys(categoryObjects)
+
+const categoriesWithCounts = allCategories.reduce((obj, cat) => {
+  if (obj[cat] === undefined) {
+    obj[cat] = 1
+  } else {
+    obj[cat] += 1
+  }
+  return obj
+}, {})
+
+
 
 export {
   allCategories,
-  categoriesUnique
+  categoriesUnique,
+  categoriesWithCounts
 }
