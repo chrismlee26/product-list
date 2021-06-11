@@ -15,6 +15,7 @@ const categoryObjects = allCategories.reduce((obj, cat) => {
 }, {})
 const categoriesUnique = Object.keys(categoryObjects)
 
+// Challenge 4
 const categoriesWithCounts = allCategories.reduce((obj, cat) => {
   if (obj[cat] === undefined) {
     obj[cat] = 1
@@ -24,10 +25,16 @@ const categoriesWithCounts = allCategories.reduce((obj, cat) => {
   return obj
 }, {})
 
+// Challenge 5
+const namesAndCategories = categoriesUnique.map(name => {
+  return { name, count: categoriesWithCounts[name] } //{ name: name } is shortened to { name }
+})
+
 
 
 export {
   allCategories,
   categoriesUnique,
-  categoriesWithCounts
+  categoriesWithCounts,
+  namesAndCategories,
 }
