@@ -1,17 +1,21 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import './App.css';
 import data, { categoriesUnique } from './data';
 
+import Header from './Header';
 import CategoryList from './CategoryList';
-import ProductList from './ProductList'
+import ProductList from './ProductList';
 
 function App() {
-  const [category, setCategory] = useState('All')
+  // const [category, setCategory] = useState('All')
+
+
   return (
     <div className="App">
-      <h1>Chris' Bodega</h1>
-      <p>Products: {data.length}</p>
-      <p>Categories: {categoriesUnique.length}</p>
+      <Header 
+        productCount={data.length} 
+        categoryCount={categoriesUnique.length} 
+      />
 
       <CategoryList />
 
