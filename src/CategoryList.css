@@ -14,3 +14,8 @@
   color: #eee;
   margin: 0.1rem;
 }
+
+button.selected {
+  background-color: #eee;
+  color: #333;
+}

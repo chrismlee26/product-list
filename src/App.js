@@ -7,19 +7,26 @@ import CategoryList from './CategoryList';
 import ProductList from './ProductList';
 
 function App() {
-  // const [category, setCategory] = useState('All')
+  // State variables to pass to children
+  const [category, setCategory] = useState('Toys')
 
 
   return (
     <div className="App">
       <Header 
+        title="Chris' Bodega"
         productCount={data.length} 
         categoryCount={categoriesUnique.length} 
       />
 
-      <CategoryList />
+      <CategoryList 
+        category={category}
+        onClick={newCategory => setCategory(newCategory)}
+      />
 
-      <ProductList />
+      <ProductList 
+        category={category}
+      />
     </div>
   );
 }
