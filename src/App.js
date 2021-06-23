@@ -5,6 +5,7 @@ import data, { categoriesUnique } from './data';
 import Header from './Header';
 import CategoryList from './CategoryList';
 import ProductList from './ProductList';
+import Inventory from './Inventory';
 
 function App() {
   // State variables to pass to children
@@ -28,6 +29,8 @@ function App() {
       <ProductList 
         category={category}
       />
+
+      <Inventory />
     </div>
   );
 }
