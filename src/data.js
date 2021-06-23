@@ -30,7 +30,7 @@ const namesAndCategories = categoriesUnique.map(name => {
   return { name, count: categoriesWithCounts[name] } //{ name: name } is shortened to { name }
 })
 
-
+namesAndCategories.push({ name: 'All', count: data.length })
 
 export {
   allCategories,

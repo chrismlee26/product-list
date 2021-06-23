@@ -8,7 +8,7 @@ import ProductList from './ProductList';
 
 function App() {
   // State variables to pass to children
-  const [category, setCategory] = useState('Toys')
+  const [category, setCategory] = useState('All')
 
 
   return (
@@ -21,6 +21,7 @@ function App() {
 
       <CategoryList 
         category={category}
+        // Why do we get to define newCategory here? How does it still work?
         onClick={newCategory => setCategory(newCategory)}
       />
 
