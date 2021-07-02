@@ -2,36 +2,46 @@ import { useState } from 'react';
 import './App.css';
 import data, { categoriesUnique } from './data';
 
+import { createStore } from 'redux';
+import { Provider  } from 'react-redux';
+import rootReducer from './reducers';
+
 import Header from './Header';
 import CategoryList from './CategoryList';
 import ProductList from './ProductList';
 import Inventory from './Inventory';
+import ShoppingCart from './ShoppingCart';
+
+const store = createStore(rootReducer)
 
 function App() {
   // State variables to pass to children
   const [category, setCategory] = useState('All')
 
-
   return (
-    <div className="App">
-      <Header 
-        title="Chris' Bodega"
-        productCount={data.length} 
-        categoryCount={categoriesUnique.length} 
-      />
+    <Provider store={store}>
+      <div className="App">
+        <Header 
+          title="Chris' Bodega"
+          productCount={data.length} 
+          categoryCount={categoriesUnique.length} 
+        />
 
-      <CategoryList 
-        category={category}
-        // Why do we get to define newCategory here? How does it still work?
-        onClick={newCategory => setCategory(newCategory)}
-      />
+        <CategoryList 
+          category={category}
+          // Why do we get to define newCategory here? How does it still work?
+          onClick={newCategory => setCategory(newCategory)}
+        />
 
-      <ProductList 
-        category={category}
-      />
+        <ShoppingCart />
 
-      <Inventory />
-    </div>
+        <ProductList 
+          category={category}
+        />
+
+        <Inventory />
+      </div>
+    </Provider>
   );
 }
 
