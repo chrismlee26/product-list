@@ -10,7 +10,7 @@ function ProductList(props) {
     <div className="ProductList">
       {data.filter(obj => obj.category === category || category === "All").map(obj => {
         return (
-          <Product {...obj} />
+          <Product {...obj} key={`${obj.id}-product`}/>
       )
     })}
   </div>

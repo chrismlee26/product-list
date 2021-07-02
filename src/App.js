@@ -29,7 +29,6 @@ function App() {
 
         <CategoryList 
           category={category}
-          // Why do we get to define newCategory here? How does it still work?
           onClick={newCategory => setCategory(newCategory)}
         />
 

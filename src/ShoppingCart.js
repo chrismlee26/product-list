@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 function ShoppingCart() {
   const cart = useSelector(state => state.shoppingCart)
-  const items = cart.map(item => <p>{data[item].name}</p>)
+  const items = cart.map(item => <p key={`${item}-item`}>{data[item].name}</p>)
   
   return (
     <div>

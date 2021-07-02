@@ -13,6 +13,7 @@ function CategoryList(props) {
 
         return (
           <button
+            key={name}
             className={className}
             onClick={() => onClick(name)}
           >
