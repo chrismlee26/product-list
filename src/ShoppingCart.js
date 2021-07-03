@@ -1,23 +1,27 @@
 import data from './data'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearCart } from './actions'
 import ShoppingCartItem from './ShoppingCartItem'
 
 function ShoppingCart() {
+  const dispatch = useDispatch()
   const cart = useSelector(state => state.shoppingCart)
-  // const itemsById = data.filter(item => cart.includes(item.id))
   const items = cart.map(item => {
     // find item in data to get name & price
-    // return shoppingCartItem & set props
-
+    for (let i = 0; i < data.length; i += 1) {
+      // if data id === item id 
+      if (data[i].id === item.id) {
+        // return shoppingCartItem & set props
+        return <ShoppingCartItem key={`${item.id}-item`} {...data[i]} qty={item.qty} />
+      }
+    }
   })
-  
-
-  // const items = itemsById.map(item => <ShoppingCartItem key={`${item.id}-item`} {...item}/>)
   
   return (
     <div>
-      <h1>Shopping Cart:</h1>
+      <h2>Shopping Cart:</h2>
       {items}
+      <button onClick={() => dispatch(clearCart())}>Clear All</button>
     </div>
   )
 }
